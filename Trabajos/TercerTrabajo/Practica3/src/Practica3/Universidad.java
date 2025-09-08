@@ -42,7 +42,7 @@ public class Universidad extends UnicastRemoteObject implements IUniversidad {
         String rude = calcularRude(nombres, primerApellido, segundoApellido, fecha_nacimiento);
         
         try {
-            // 1. Llamar a SEGIP (código de cliente RMI)
+        
             System.out.println("Universidad: Consultando a SEGIP...");
             ISegip segip;
             boolean verificacionSegip = false;
@@ -63,7 +63,7 @@ public class Universidad extends UnicastRemoteObject implements IUniversidad {
                 mensajeError += "Error al conectar con SEGIP. ";
             }
             
-            // 2. Llamar a SEDUCA por TCP
+        
             System.out.println("Universidad: Consultando a SEDUCA...");
             boolean verificacionSeduca = false;
             
@@ -142,7 +142,7 @@ public class Universidad extends UnicastRemoteObject implements IUniversidad {
                 mensajeError += "Error en la comunicacion con SERECI. ";
             }
             
-            // Crear el objeto Diploma con los resultados
+        
             if (datosValidos) {
                 aux = new Diploma(nombreCompleto, carrera, java.time.LocalDate.now().toString(), "");
             } else {
@@ -163,10 +163,7 @@ public class Universidad extends UnicastRemoteObject implements IUniversidad {
         String parte2 = primerApellido.substring(0, 2);
         String parte3 = segundoApellido.substring(0, 2);
 
-        // EXPLICACIÓN: Esta es la parte importante.
-        // La expresión regular "[ /\\-]" significa: "divide la cadena
-        // por cualquier espacio, barra (/) o guion (-)".
-        // Esto hace que el código sea mucho más flexible.
+        
         String[] partesFecha = fechaNacimiento.split("[ /\\-]");
         String fechaFormateada = partesFecha[0] + partesFecha[1] + partesFecha[2];
         

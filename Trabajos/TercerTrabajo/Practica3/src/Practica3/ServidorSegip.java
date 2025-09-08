@@ -18,12 +18,9 @@ import java.util.logging.Logger;
  */
 public class ServidorSegip {
 
-    // En ServidorSegip.java
-    // En ServidorSegip.java
-    // En ServidorSegip.java
+    
     public static void main(String[] args) {
         try {
-            // Intenta crear la "oficina de registro" en el puerto 1099.
             LocateRegistry.createRegistry(1099);
 
             Segip segip = new Segip();
@@ -31,12 +28,12 @@ public class ServidorSegip {
             System.out.println("Servidor SEGIP iniciado y registro creado en el puerto 1099.");
 
         } catch (RemoteException ex) {
-            // Este error salta si la "oficina" ya estaba abierta.
+            
             if (ex.getCause() instanceof java.net.BindException) {
                 System.out.println("AVISO: El registro RMI en el puerto 1099 ya está en uso (esto es normal si otro servidor ya lo inició).");
-                // Como ya existe, intentamos registrar el servicio de todas formas.
+            
                 try {
-                    Naming.rebind("Segip", new Segip()); // rebind es más seguro
+                    Naming.rebind("Segip", new Segip()); 
                     System.out.println("Servidor SEGIP registrado en el registro existente.");
                 } catch (Exception e) {
                     Logger.getLogger(ServidorSegip.class.getName()).log(Level.SEVERE, "Fallo al re-registrar", e);

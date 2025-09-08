@@ -35,7 +35,7 @@ public class ServidorSereci {
                 String received = new String(packet.getData(), 0, packet.getLength());
                 System.out.println("SERECI: Solicitud recibida: " + received);
 
-                // Format: Ver-fecha:Nombres,Apellidos,fecha
+               
                 String[] parts = received.split(":");
                 if (parts.length == 2) {
                     String[] datos = parts[1].split(",");
@@ -60,7 +60,7 @@ public class ServidorSereci {
                     }
                 }
 
-                // Limpiar el buffer para la próxima solicitud
+               
                 buffer = new byte[1024];
             }
         } catch (SocketException ex) {
@@ -74,13 +74,13 @@ public class ServidorSereci {
         }
     }
 
-    // Reemplaza el método verificarFechaNacimiento en ServidorSereci.java con este:
+   
     private static boolean verificarFechaNacimiento(String fecha) {
         if (fecha == null || fecha.isEmpty()) {
             return false;
         }
 
-        // Usamos la misma expresión regular para aceptar guiones, barras o espacios
+   
         String[] parts = fecha.split("[ /\\-]");
         if (parts.length != 3) {
             return false;
@@ -91,7 +91,7 @@ public class ServidorSereci {
             int mes = Integer.parseInt(parts[1]);
             int anio = Integer.parseInt(parts[2]);
 
-            // Validaciones básicas (se pueden mejorar, pero cumplen el objetivo)
+   
             if (dia < 1 || dia > 31) {
                 return false;
             }
@@ -99,7 +99,7 @@ public class ServidorSereci {
                 return false;
             }
             if (anio < 1900 || anio > 2025) {
-                return false; // Actualizado al año actual
+                return false;
             }
             return true;
         } catch (NumberFormatException e) {

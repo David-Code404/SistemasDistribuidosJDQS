@@ -23,14 +23,14 @@ public class Cliente {
     public static void main(String[] args) {
         IUniversidad universidad;
         Diploma diploma;
-        // Creamos un objeto Scanner para leer la entrada del usuario
+        
         Scanner scanner = new Scanner(System.in); 
 
         try {
             System.out.println("Cliente: Conectando con el Servidor Universidad...");
-            universidad = (IUniversidad) Naming.lookup("rmi://localhost/Universidad"); // Se conecta al servidor RMI
+            universidad = (IUniversidad) Naming.lookup("rmi://localhost/Universidad"); 
 
-            // --- INICIO DEL FORMULARIO POR TECLADO ---
+            
             System.out.println("\n--- Formulario de Solicitud de Diploma ---");
             System.out.print("Ingrese CI: ");
             String ci = scanner.nextLine();
@@ -71,16 +71,16 @@ public class Cliente {
                     carreraSeleccionada = Carrera.CienciaComputacion;
                     break;
             }
-            // --- FIN DEL FORMULARIO ---
+            
 
             System.out.println("\nCliente: Enviando datos al servidor para su verificación...");
-            // Se llama al método remoto con los datos ingresados por el usuario
+            
             diploma = universidad.EmitirDiploma(ci, nombres, primerApellido, segundoApellido, fechaNacimiento, carreraSeleccionada);
             
             System.out.println("--- Resultado de la Solicitud ---");
             if (diploma.getMensaje().equals("")) {
                 System.out.println("¡Verificación completada! Diploma emitido:");
-                // Se imprime el diploma usando el método toString() que definiste
+                
                 System.out.println(diploma);
             } else {
                  System.out.println("No se pudo emitir el diploma por los siguientes motivos:");
@@ -91,7 +91,7 @@ public class Cliente {
             System.err.println("Error en el cliente: " + ex.getMessage());
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            scanner.close(); // Se cierra el scanner para liberar recursos
+            scanner.close();
         }
     }
 }

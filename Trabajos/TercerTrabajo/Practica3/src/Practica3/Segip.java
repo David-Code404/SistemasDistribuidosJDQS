@@ -22,9 +22,7 @@ public class Segip extends UnicastRemoteObject implements ISegip {
     public boolean Verificar(String ci, String nombres, String apellidos) throws RemoteException {
         System.out.println("SEGIP: Verificando CI: " + ci + ", Nombres: " + nombres + ", Apellidos: " + apellidos);
 
-        // --- LÓGICA DE VALIDACIÓN MEJORADA Y GENERAL ---
-        // En lugar de verificar una longitud exacta, ahora solo comprobamos
-        // que los datos no lleguen vacíos.
+        
         boolean isValid = !ci.isEmpty()
                 && !nombres.isEmpty()
                 && !apellidos.isEmpty();

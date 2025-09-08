@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author David-Code
  */
 public class ServidorSeduca {
-    // En ServidorSeduca.java
+   
 
     public static void main(String[] args) {
         int port = 5002;
@@ -45,9 +45,6 @@ public class ServidorSeduca {
                     rude = comandos[1];
                     System.out.println("SEDUCA: Verificando RUDE: " + rude);
 
-                    // --- LÓGICA DE VALIDACIÓN MEJORADA Y GENERAL ---
-                    // En lugar de verificar la primera letra, ahora verificamos que el RUDE
-                    // no sea un error y que tenga una longitud razonable (un RUDE normal tiene más de 10 caracteres).
                     if (!rude.equals("ERROR") && rude.length() > 10) {
                         mensaje = "si";
                     } else {

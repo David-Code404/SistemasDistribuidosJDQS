@@ -17,12 +17,12 @@ import java.util.logging.Logger;
  * @author David-Code
  */
 public class ServidorUniversidad {
-    // En ServidorUniversidad.java
+    
 
-    // En ServidorUniversidad.java
+    
     public static void main(String[] args) {
         try {
-            // Intenta crear el registro. Fallará si Segip ya lo hizo, lo cual es correcto.
+    
             LocateRegistry.createRegistry(1099);
 
             Universidad universidad = new Universidad();
@@ -30,11 +30,11 @@ public class ServidorUniversidad {
             System.out.println("Servidor Universidad iniciado y registrado correctamente.");
 
         } catch (RemoteException ex) {
-            // ¡Esta es la parte importante! El programa entrará aquí cuando lo ejecutes después de Segip.
+    
             if (ex.getCause() instanceof java.net.BindException) {
                 System.out.println("AVISO en Universidad: El registro RMI ya está en uso (¡Perfecto! Usaremos el existente).");
                 try {
-                    // Como el registro ya existe, simplemente registramos nuestro servicio.
+    
                     Naming.rebind("Universidad", new Universidad());
                     System.out.println("Servidor Universidad registrado en el registro existente.");
                 } catch (Exception e) {
