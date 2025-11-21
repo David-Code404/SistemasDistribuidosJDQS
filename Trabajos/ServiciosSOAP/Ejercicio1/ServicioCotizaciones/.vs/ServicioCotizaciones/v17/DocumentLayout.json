@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\joses\\source\\repos\\ServicioCotizaciones\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7217DB2-3473-4477-B69A-4EC05AC53142}|ServicioCotizaciones\\ServicioCotizaciones.csproj|c:\\users\\joses\\source\\repos\\serviciocotizaciones\\serviciocotizaciones\\webservice2.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7217DB2-3473-4477-B69A-4EC05AC53142}|ServicioCotizaciones\\ServicioCotizaciones.csproj|solutionrelative:serviciocotizaciones\\webservice2.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WebService2.asmx.cs",
+              "DocumentMoniker": "C:\\Users\\joses\\source\\repos\\ServicioCotizaciones\\ServicioCotizaciones\\WebService2.asmx.cs",
+              "RelativeDocumentMoniker": "ServicioCotizaciones\\WebService2.asmx.cs",
+              "ToolTip": "C:\\Users\\joses\\source\\repos\\ServicioCotizaciones\\ServicioCotizaciones\\WebService2.asmx.cs",
+              "RelativeToolTip": "ServicioCotizaciones\\WebService2.asmx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T19:02:48.09Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

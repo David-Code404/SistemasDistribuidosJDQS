@@ -1,0 +1,12 @@
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\bin\Debug\ClienteSegip.exe.config
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\bin\Debug\ClienteSegip.exe
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\bin\Debug\ClienteSegip.pdb
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\bin\Debug\ClienteSegip.xml
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.vbproj.AssemblyReference.cache
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.Form1.resources
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.Resources.resources
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.vbproj.GenerateResource.cache
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.vbproj.CoreCompileInputs.cache
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.exe
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.xml
+C:\Users\joses\source\repos\ClienteSegip\ClienteSegip\obj\Debug\ClienteSegip.pdb

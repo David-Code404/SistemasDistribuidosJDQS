@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDACBD6-703B-4AB6-BC50-CB4138D20D4F}|ClienteFinal\\ClienteFinal.vbproj|c:\\users\\joses\\source\\repos\\clientefinal\\clientefinal\\form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{2FDACBD6-703B-4AB6-BC50-CB4138D20D4F}|ClienteFinal\\ClienteFinal.vbproj|solutionrelative:clientefinal\\form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDACBD6-703B-4AB6-BC50-CB4138D20D4F}|ClienteFinal\\ClienteFinal.vbproj|c:\\users\\joses\\source\\repos\\clientefinal\\clientefinal\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{2FDACBD6-703B-4AB6-BC50-CB4138D20D4F}|ClienteFinal\\ClienteFinal.vbproj|solutionrelative:clientefinal\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDACBD6-703B-4AB6-BC50-CB4138D20D4F}|ClienteFinal\\ClienteFinal.vbproj|c:\\users\\joses\\source\\repos\\clientefinal\\clientefinal\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{2FDACBD6-703B-4AB6-BC50-CB4138D20D4F}|ClienteFinal\\ClienteFinal.vbproj|solutionrelative:clientefinal\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\ClienteFinal\\Form1.Designer.vb",
+              "RelativeDocumentMoniker": "ClienteFinal\\Form1.Designer.vb",
+              "ToolTip": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\ClienteFinal\\Form1.Designer.vb",
+              "RelativeToolTip": "ClienteFinal\\Form1.Designer.vb",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAhwGAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-21T20:57:01.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.vb",
+              "DocumentMoniker": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\ClienteFinal\\Form1.vb",
+              "RelativeDocumentMoniker": "ClienteFinal\\Form1.vb",
+              "ToolTip": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\ClienteFinal\\Form1.vb",
+              "RelativeToolTip": "ClienteFinal\\Form1.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-21T20:53:39.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\ClienteFinal\\Form1.vb",
+              "RelativeDocumentMoniker": "ClienteFinal\\Form1.vb",
+              "ToolTip": "C:\\Users\\joses\\source\\repos\\ClienteFinal\\ClienteFinal\\Form1.vb [Dise\u00F1o]",
+              "RelativeToolTip": "ClienteFinal\\Form1.vb [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-21T20:50:34.749Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

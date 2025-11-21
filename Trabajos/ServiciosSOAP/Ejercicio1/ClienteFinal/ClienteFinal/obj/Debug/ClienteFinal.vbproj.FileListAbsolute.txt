@@ -1,0 +1,12 @@
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.vbproj.AssemblyReference.cache
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.Form1.resources
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.Resources.resources
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.vbproj.GenerateResource.cache
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.vbproj.CoreCompileInputs.cache
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\bin\Debug\ClienteFinal.exe.config
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\bin\Debug\ClienteFinal.exe
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\bin\Debug\ClienteFinal.pdb
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\bin\Debug\ClienteFinal.xml
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.exe
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.xml
+C:\Users\joses\source\repos\ClienteFinal\ClienteFinal\obj\Debug\ClienteFinal.pdb
