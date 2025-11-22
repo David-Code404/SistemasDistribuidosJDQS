@@ -1,0 +1,30 @@
+"Un escalar para manejar fechas"
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"Definición del objeto Pronostico"
+type Pronostico {
+    id: ID!
+    fecha: Date!
+    cantidad_estimada: Int!
+    created_at: String
+    updated_at: String
+}
+
+type Query {
+    "Obtener todos los pronósticos"
+    pronosticos: [Pronostico!]! @all
+    
+    "Buscar uno por ID"
+    pronostico(id: ID @eq): Pronostico @find
+}
+
+type Mutation {
+    "Crear un nuevo pronóstico"
+    createPronostico(fecha: Date!, cantidad_estimada: Int!): Pronostico @create
+    
+    "Actualizar un pronóstico"
+    updatePronostico(id: ID!, fecha: Date, cantidad_estimada: Int): Pronostico @update
+    
+    "Eliminar un pronóstico"
+    deletePronostico(id: ID!): Pronostico @delete
+}

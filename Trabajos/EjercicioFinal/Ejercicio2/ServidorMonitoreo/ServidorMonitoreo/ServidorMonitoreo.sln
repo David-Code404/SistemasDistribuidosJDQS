@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorMonitoreo", "ServidorMonitoreo\ServidorMonitoreo.csproj", "{7638A3FF-E01A-432E-BC63-10DB438B60AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClienteSensor", "ClienteSensor\ClienteSensor.csproj", "{DC9A7A35-D690-4724-915D-D7F7C5E64743}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7638A3FF-E01A-432E-BC63-10DB438B60AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7638A3FF-E01A-432E-BC63-10DB438B60AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7638A3FF-E01A-432E-BC63-10DB438B60AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7638A3FF-E01A-432E-BC63-10DB438B60AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC9A7A35-D690-4724-915D-D7F7C5E64743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC9A7A35-D690-4724-915D-D7F7C5E64743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC9A7A35-D690-4724-915D-D7F7C5E64743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC9A7A35-D690-4724-915D-D7F7C5E64743}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0790E17-880A-4F4A-8D8B-3FC980D9CC45}
+	EndGlobalSection
+EndGlobal
