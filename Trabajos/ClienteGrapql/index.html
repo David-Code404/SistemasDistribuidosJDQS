@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente GraphQ</title>
+</head>
+<body>
+
+    <h1>Cliente GraphQL</h1>
+
+    <div>
+        <h2>Paso 1: Login</h2>
+        <form id="loginForm">
+            <input type="email" id="email" value="admin@sis258.com" required>
+            <input type="password" id="password" value="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <pre id="tokenDisplay">Aquí se mostrará el token...</pre>
+    </div>
+
+    <div id="form-section" style="display: none;">
+        <h2 id="form-title">Crear Nueva Persona</h2>
+        <form id="personaForm">
+            <input type="hidden" id="persona_id">
+            
+            <input type="text" id="nombres" placeholder="Nombres" required>
+            <input type="text" id="apellidos" placeholder="Apellidos" required>
+            <input type="text" id="ci" placeholder="CI" required>
+            <input type="text" id="direccion" placeholder="Dirección">
+            <input type="text" id="telefono" placeholder="Teléfono">
+            <input type="email" id="emailPersona" placeholder="Email">
+            <button type="submit" id="btnGuardar">Guardar Persona</button>
+            <button type="button" id="btnCancelar" style="display: none; background: #6c757d;">Cancelar Edición</button>
+        </form>
+        <pre id="formDisplay">Aqui se mostrara el resultado</pre>
+    </div>
+
+    <div id="read-section" style="display: none;">
+        <h2>Lista de Personas</h2>
+        <button id="btnGetPersonas">Refrescar Lista</button>
+        
+        <table id="personasTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="personas-table-body">
+                </tbody>
+        </table>
+        <pre id="deleteDisplay">Aqui se mostrara el resultado de eliminar</pre>
+    </div>
+
+
+    <script>
+
+        const API_URL_REST = 'http://127.0.0.1:8000/api'; 
+        const API_URL_GRAPHQL = 'http://127.0.0.1:8000/graphql';
+        let miToken = null;
+
+        const loginForm = document.getElementById('loginForm');
+        const tokenDisplay = document.getElementById('tokenDisplay');
+        const formSection = document.getElementById('form-section');
+        const readSection = document.getElementById('read-section');
+        
+        // Formulario
+        const personaForm = document.getElementById('personaForm');
+        const formDisplay = document.getElementById('formDisplay');
+        const formTitle = document.getElementById('form-title');
+        const btnGuardar = document.getElementById('btnGuardar');
+        const btnCancelar = document.getElementById('btnCancelar');
+        const personaIdInput = document.getElementById('persona_id');
+
+        // Tabla
+        const btnGetPersonas = document.getElementById('btnGetPersonas');
+        const personasTableBody = document.getElementById('personas-table-body');
+        const deleteDisplay = document.getElementById('deleteDisplay');
+
+        
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            tokenDisplay.innerText = "Autenticando...";
+            try {
+                const response = await fetch(`${API_URL_REST}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: document.getElementById('email').value, 
+                        password: document.getElementById('password').value 
+                    })
+                });
+                const data = await response.json();
+                if (response.ok && data.token) {
+                    miToken = data.token; 
+                    tokenDisplay.innerText = `Token guardado.`;
+                    formSection.style.display = 'block'; 
+                    readSection.style.display = 'block';
+                    btnGetPersonas.click(); 
+                } else {
+                    tokenDisplay.innerText = `Error: ${data.mensaje || 'Error desconocido'}`;
+                }
+            } catch (error) {
+                tokenDisplay.innerText = `Error de conexión: ${error.message}`;
+            }
+        });
+
+        async function callGraphQL(queryBody) {
+            if (!miToken) {
+                throw new Error("No estás autenticado. Haz login primero.");
+            }
+            const response = await fetch(API_URL_GRAPHQL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${miToken}` 
+                },
+                body: JSON.stringify(queryBody)
+            });
+            const data = await response.json();
+            if (data.errors) {
+
+                let errorMsg = data.errors[0].message;
+                if (data.errors[0].extensions?.debugMessage) {
+                    if (data.errors[0].extensions.debugMessage.includes('UNIQUE constraint failed') ||
+                        data.errors[0].extensions.debugMessage.includes('Duplicate entry')) {
+                        errorMsg = "Error: El CI o el Email ya existen en la base de datos.";
+                    }
+                }
+                throw new Error(errorMsg);
+            }
+            return data.data;
+        }
+
+        async function cargarPersonas() {
+            personasTableBody.innerHTML = `<tr><td colspan="5">Cargando...</td></tr>`;
+            const graphqlQuery = {
+                query: `
+                    query {
+                        personas {
+                            id
+                            nombres
+                            apellidos
+                            email
+                            ci
+                            direccion
+                            telefono
+                        }
+                    }
+                `
+            }; 
+
+            try {
+                const data = await callGraphQL(graphqlQuery);
+                const personas = data.personas;
+                personasTableBody.innerHTML = ""; 
+                
+                personas.forEach(persona => {
+                    const tr = document.createElement('tr');
+                    tr.dataset.persona = JSON.stringify(persona);
+                    tr.innerHTML = `
+                        <td>${persona.id}</td>
+                        <td>${persona.nombres}</td>
+                        <td>${persona.apellidos}</td>
+                        <td>${persona.email}</td>
+                        <td>
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-delete" data-id="${persona.id}">Eliminar</button>
+                        </td>
+                    `;
+                    personasTableBody.appendChild(tr);
+                });
+
+            } catch (error) {
+                personasTableBody.innerHTML = `<tr><td colspan="5">Error: ${error.message}</td></tr>`;
+            }
+        }
+        btnGetPersonas.addEventListener('click', cargarPersonas);
+
+
+        function resetFormulario() {
+            personaForm.reset();
+            personaIdInput.value = '';
+            formTitle.innerText = 'Crear Nueva Persona';
+            btnGuardar.innerText = 'Guardar Persona';
+            btnCancelar.style.display = 'none';
+            formDisplay.innerText = "Aquí se mostrará el resultado...";
+        }
+        btnCancelar.addEventListener('click', resetFormulario);
+
+
+        personaForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formDisplay.innerText = "Guardando...";
+
+            const id = personaIdInput.value; 
+            let mutationQuery;
+            let variables;
+
+            const formData = {
+                nombres: document.getElementById('nombres').value,
+                apellidos: document.getElementById('apellidos').value,
+                ci: document.getElementById('ci').value,
+                direccion: document.getElementById('direccion').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('emailPersona').value,
+            };
+
+            if (id) {
+                
+                variables = { ...formData, id: parseInt(id) };
+                mutationQuery = `
+                    mutation UpdatePersona(
+                        $id: Int!, $nombres: String, $apellidos: String, $ci: String,
+                        $direccion: String, $telefono: String, $email: String
+                    ) {
+                        updatePersona(
+                            id: $id, nombres: $nombres, apellidos: $apellidos, ci: $ci,
+                            direccion: $direccion, telefono: $telefono, email: $email
+                        ) {
+                            id
+                            nombres
+                            email
+                        }
+                    }
+                `;
+            } else {
+                
+                variables = formData;
+                mutationQuery = `
+                    mutation CreatePersona(
+                        $nombres: String!, $apellidos: String!, $ci: String!,
+                        $direccion: String, $telefono: String, $email: String
+                    ) {
+                        createPersona(
+                            nombres: $nombres, apellidos: $apellidos, ci: $ci,
+                            direccion: $direccion, telefono: $telefono, email: $email
+                        ) {
+                            id
+                            nombres
+                            email
+                        }
+                    }
+                `;
+            }
+
+            try {
+                const data = await callGraphQL({ query: mutationQuery, variables: variables });
+                
+                const resultKey = id ? 'updatePersona' : 'createPersona';
+                const action = id ? 'Actualizada' : 'Creada';
+                
+                formDisplay.innerText = `Persona ${action}: \n${JSON.stringify(data[resultKey], null, 2)}`;
+                
+                resetFormulario(); 
+                cargarPersonas();
+
+            } catch (error) {
+                formDisplay.innerText = `Error: ${error.message}`;
+            }
+        });
+
+        
+        personasTableBody.addEventListener('click', async (e) => {
+            
+            // --- ACCIÓN DE ELIMINAR ---
+            if (e.target.classList.contains('btn-delete')) {
+                const id = e.target.dataset.id;
+                
+                if (!confirm(`¿Seguro que quieres eliminar a la persona con ID ${id}?`)) {
+                    return;
+                }
+                deleteDisplay.innerText = `Eliminando ID ${id}...`;
+                
+                const mutation = {
+                    query: `
+                        mutation DeletePersona($id: Int!) {
+                            deletePersona(id: $id) { id nombres }
+                        }
+                    `,
+                    variables: { id: parseInt(id) }
+                };
+
+                try {
+                    const data = await callGraphQL(mutation);
+                    deleteDisplay.innerText = `Eliminado: ${data.deletePersona.nombres} (ID: ${data.deletePersona.id})`;
+                    cargarPersonas(); // Recargar la tabla es más seguro que borrar la fila
+                } catch (error) {
+                    deleteDisplay.innerText = `Error al eliminar: ${error.message}`;
+                }
+            }
+
+            // --- ACCIÓN DE EDITAR ---
+            if (e.target.classList.contains('btn-edit')) {
+                // 1. Obtener datos de la fila (que guardamos en 'dataset')
+                const persona = JSON.parse(e.target.closest('tr').dataset.persona);
+
+                // 2. Rellenar el formulario con esos datos
+                personaIdInput.value = persona.id;
+                document.getElementById('nombres').value = persona.nombres;
+                document.getElementById('apellidos').value = persona.apellidos;
+                document.getElementById('ci').value = persona.ci;
+                document.getElementById('direccion').value = persona.direccion;
+                document.getElementById('telefono').value = persona.telefono;
+                document.getElementById('emailPersona').value = persona.email;
+
+                // 3. Cambiar el título del formulario a "Editar Persona"
+                formTitle.innerText = `Editando Persona ID: ${persona.id}`;
+                btnGuardar.innerText = 'Actualizar Persona';
+                btnCancelar.style.display = 'block';
+
+                // 4. Mover la vista al formulario
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+    </script>
+
+</body>
+</html>
